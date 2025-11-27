@@ -1,0 +1,48 @@
+.contract-display-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(0, 0, 0, 1);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 106, 0.2);
+    transition: all 0.3s ease;
+}
+
+.contract-display-enhanced:hover {
+    border-color: rgba(0, 255, 106, 0.5);
+    background: rgba(0, 0, 0, 1);
+}
+
+.contract-address-enhanced {
+    flex: 1;
+    font-size: 0.8rem;
+    color: var(--accent-toxic);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Courier New', monospace;
+}
+
+.stat-item-enhanced {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 1);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-alarm);
+    transition: all 0.3s ease;
+}
+
+.stat-item-enhanced:hover {
+    background: rgba(0, 0, 0, 1);
+    border-left-color: var(--accent-toxic);
+    transform: translateX(10px);
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

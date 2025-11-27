@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TROLLFACE2 - DOMINANCE ISN'T NEGOTIABLE</title>
+  <link rel="icon" type="image/png" href="./src/assets/trollface_closeup.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Impact&display=swap"
+    rel="stylesheet">
+  <style>
+    /* --- CSS VARIABLES --- */
+    :root {
+      --psycho-green: #00ff00;
+      --psycho-black: #000000;
+      --psycho-white: #ffffff;
+      --psycho-font: 'Impact', sans-serif;
+      --body-font: 'Comic Neue', cursive;
+    }
+
+    /* --- GLOBAL STYLES --- */
+    body {
+      background-color: var(--psycho-black);
+      color: var(--psycho-green);
+      font-family: var(--body-font);
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* CRT Scanline Effect */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Glitch Animation */
+    @keyframes glitch-text {
+      0% {
+        transform: translate(0);
+        text-shadow: -2px 0 red, 2px 0 blue;
+      }
+
+      25% {
+        transform: translate(-2px, 2px);
+        text-shadow: -2px -2px red, 2px 2px blue;
+      }
+
+      50% {
+        transform: translate(2px, -2px);
+        text-shadow: 2px 2px red, -2px -2px blue;
+      }
+
+      75% {
+        transform: translate(-2px, -2px);
+        text-shadow: -2px 2px red, 2px -2px blue;
+      }
+
+      100% {
+        transform: translate(0);
+        text-shadow: -2px 0 red, 2px 0 blue;
+      }
+    }
+
+    h1,
+    h2,
+    h3 {
+      animation: glitch-text 3s infinite;
+    }
+
+    /* --- NAV --- */
+    .psycho-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #000;
+      border-bottom: 4px solid var(--psycho-green);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .psycho-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--psycho-font);
+      font-size: 2rem;
+      color: var(--psycho-green);
+      text-shadow: 0 0 10px var(--psycho-green);
+    }
+
+    .nav-troll-spin {
+      height: 50px;
+      animation: spin 2s linear infinite;
+      filter: drop-shadow(0 0 5px var(--psycho-green));
+    }
+
+    .psycho-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .psycho-links a {
+      color: var(--psycho-white);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      border: 2px solid transparent;
+      padding: 5px 10px;
+    }
+
+    .psycho-links a:hover {
+      color: var(--psycho-black);
+      background: var(--psycho-green);
+      box-shadow: 0 0 20px var(--psycho-green);
+      transform: skew(-10deg);
+    }
+
+    .buy-btn-nav {
+      background: var(--psycho-green);
+      color: var(--psycho-black) !important;
+      border: 2px solid var(--psycho-green) !important;
+      font-weight: 900 !important;
+    }
+
+    /* --- HERO --- */
+    .psycho-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 4px solid var(--psycho-green);
+    }
+
+    .hero-content-psycho {
+      z-index: 2;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .psycho-title {
+      font-family: var(--psycho-font);
+      font-size: 8rem;
+      line-height: 0.8;
+      color: var(--psycho-white);
+      margin-bottom: 1rem;
+      text-shadow: 5px 5px 0 var(--psycho-green);
+    }
+
+    .psycho-sub {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: var(--psycho-green);
+      background: #000;
+      display: inline-block;
+      padding: 0 10px;
+    }
+
+    /* --- BUTTONS --- */
+    .hero-buttons {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .btn-psycho,
+    .btn-cult {
+      font-family: var(--psycho-font);
+      font-size: 2rem;
+      padding: 1rem 3rem;
+      text-decoration: none;
+      transition: all 0.1s;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    .btn-psycho {
+      background: var(--psycho-green);
+      color: var(--psycho-black);
+      border: 4px solid var(--psycho-black);
+      box-shadow: 10px 10px 0px var(--psycho-white);
+    }
+
+    .btn-cult {
+      background: var(--psycho-black);
+      color: var(--psycho-green);
+      border: 4px solid var(--psycho-green);
+      box-shadow: 10px 10px 0px var(--psycho-green);
+    }
+
+    .btn-psycho:hover,
+    .btn-cult:hover {
+      transform: translate(5px, 5px);
+      box-shadow: 5px 5px 0px;
+      filter: invert(1);
+    }
+
+    /* --- CA --- */
+    .ca-container {
+      margin-top: 2rem;
+      background: #000;
+      padding: 1rem;
+      border: 2px solid var(--psycho-green);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px var(--psycho-green);
+    }
+
+    .ca-label {
+      font-weight: bold;
+      color: var(--psycho-green);
+      font-size: 1.5rem;
+    }
+
+    .ca-address {
+      font-family: monospace;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    /* --- SECTIONS --- */
+    .psycho-section {
+      padding: 6rem 2rem;
+      background: #050505;
+      border-bottom: 4px solid var(--psycho-green);
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .psycho-section h2 {
+      font-family: var(--psycho-font);
+      font-size: 5rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      text-transform: uppercase;
+      color: var(--psycho-white);
+      text-shadow: 5px 5px 0 var(--psycho-green);
+      border: 4px solid var(--psycho-green);
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: #000;
+      transform: rotate(-2deg);
+    }
+
+    /* --- LORE --- */
+    .lore-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .lore-text-box {
+      font-size: 1.5rem;
+      border: 2px solid var(--psycho-green);
+      padding: 2rem;
+      background: #000;
+      box-shadow: 10px 10px 0 var(--psycho-white);
+    }
+
+    .lore-text-box h3 {
+      font-family: var(--psycho-font);
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--psycho-green);
+    }
+
+    .spin-troll {
+      width: 100%;
+      max-width: 400px;
+      animation: spin 5s linear infinite;
+      filter: drop-shadow(0 0 20px var(--psycho-green));
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* --- CHART --- */
+    .chart-frame-psycho {
+      border: 4px solid var(--psycho-green);
+      background: #000;
+      box-shadow: 0 0 30px var(--psycho-green);
+      height: 80vh;
+      overflow: hidden;
+    }
+
+    #dexscreener-embed {
+      width: 100%;
+      height: 100%;
+    }
+
+    #dexscreener-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* --- STATS --- */
+    .stats-psycho-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .stat-psycho-card {
+      background: #000;
+      color: var(--psycho-green);
+      padding: 2rem;
+      text-align: center;
+      border: 4px solid var(--psycho-green);
+      box-shadow: 8px 8px 0 var(--psycho-white);
+      transition: all 0.3s ease;
+    }
+
+    .stat-psycho-card:hover {
+      transform: translate(-5px, -5px);
+      box-shadow: 12px 12px 0 var(--psycho-green);
+      background: #111;
+    }
+
+    .stat-psycho-card h3 {
+      font-family: var(--psycho-font);
+      font-size: 2.5rem;
+      color: var(--psycho-white);
+    }
+
+    .stat-psycho-card p {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--psycho-green);
+    }
+
+    /* --- HOW TO BUY --- */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .step-card {
+      background: #000;
+      color: var(--psycho-green);
+      padding: 2rem;
+      border: 4px solid var(--psycho-green);
+      position: relative;
+      transition: transform 0.3s ease;
+      box-shadow: 10px 10px 0 var(--psycho-white);
+    }
+
+    .step-card:hover {
+      transform: scale(1.05) rotate(2deg);
+      z-index: 10;
+      box-shadow: 15px 15px 0 var(--psycho-green);
+      background: #111;
+    }
+
+    .step-num {
+      position: absolute;
+      top: -25px;
+      left: -25px;
+      width: 70px;
+      height: 70px;
+      background: var(--psycho-green);
+      color: #000;
+      font-family: var(--psycho-font);
+      font-size: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 4px solid #000;
+      box-shadow: 5px 5px 0 var(--psycho-white);
+    }
+
+    .step-card h3 {
+      font-family: var(--psycho-font);
+      font-size: 2rem;
+      margin: 1rem 0;
+      color: var(--psycho-white);
+    }
+
+    .step-card p {
+      font-size: 1.3rem;
+      line-height: 1.4;
+      color: var(--psycho-green);
+      font-weight: bold;
+    }
+
+    .btn-center {
+      display: table;
+      margin: 0 auto;
+    }
+
+    /* --- FOOTER --- */
+    .psycho-footer {
+      background: #000;
+      padding: 4rem;
+      text-align: center;
+      border-top: 4px solid var(--psycho-green);
+    }
+
+    .psycho-footer p {
+      font-family: var(--psycho-font);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--psycho-green);
+    }
+
+    .footer-coin {
+      width: 120px;
+      animation: float 3s infinite ease-in-out;
+      filter: drop-shadow(0 0 10px var(--psycho-green));
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* --- GAME CSS --- */
+    .game-wrapper {
+      margin: 3rem auto;
+      border: 4px solid var(--psycho-green);
+      box-shadow: 0 0 30px var(--psycho-green);
+      max-width: 600px;
+    }
+
+    .game-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .game-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: pointer;
+    }
+
+    .game-ui {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .score-board {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .score,
+    .high-score {
+      font-family: 'Impact', sans-serif;
+      font-size: 2rem;
+      color: var(--psycho-green);
+      text-shadow: 2px 2px 0 black;
+    }
+
+    .game-over-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      pointer-events: auto;
+    }
+
+    .game-over {
+      font-family: 'Impact', sans-serif;
+      font-size: 4rem;
+      color: red;
+      text-shadow: 4px 4px 0 black;
+      animation: shake 0.5s infinite;
+      margin-bottom: 1rem;
+    }
+
+    .restart-text {
+      font-family: 'Comic Neue', cursive;
+      font-size: 1.5rem;
+      color: var(--psycho-white);
+      font-weight: bold;
+      animation: pulse 1s infinite;
+      cursor: pointer;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translate(1px, 1px) rotate(0deg);
+      }
+
+      10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+      }
+
+      20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+      }
+
+      30% {
+        transform: translate(3px, 2px) rotate(0deg);
+      }
+
+      40% {
+        transform: translate(1px, -1px) rotate(1deg);
+      }
+
+      50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+      }
+
+      60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+      }
+
+      70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+      }
+
+      80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+      }
+
+      90% {
+        transform: translate(1px, 2px) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+      }
+    }
+
+    /* --- MAKER CSS --- */
+    .troll-maker-container {
+      background: #000;
+      border: 4px solid var(--psycho-green);
+      padding: 2rem;
+      box-shadow: 0 0 20px var(--psycho-green);
+    }
+
+    .troll-maker-container h2 {
+      font-family: var(--psycho-font);
+      color: var(--psycho-green);
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 0 #fff;
+    }
+
+    .upload-zone {
+      border: 4px dashed #555;
+      padding: 4rem;
+      cursor: pointer;
+      background: #111;
+      color: var(--psycho-green);
+      text-align: center;
+    }
+
+    .upload-zone:hover {
+      border-color: var(--psycho-green);
+      background: #000;
+      box-shadow: inset 0 0 20px var(--psycho-green);
+    }
+
+    .canvas-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    canvas.maker-canvas {
+      border: 4px solid var(--psycho-green);
+      max-width: 100%;
+      box-shadow: 0 0 15px var(--psycho-green);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      width: 100%;
+      background: #111;
+      padding: 1rem;
+      border: 2px solid var(--psycho-green);
+    }
+
+    .controls label {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      font-weight: bold;
+      color: var(--psycho-white);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin-top: 0.5rem;
+      accent-color: var(--psycho-green);
+    }
+
+    .action-buttons {
+      grid-column: span 2;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .btn-reset,
+    .btn-download {
+      padding: 1rem 2rem;
+      font-family: var(--psycho-font);
+      font-size: 1.5rem;
+      cursor: pointer;
+      border: none;
+      text-transform: uppercase;
+    }
+
+    .btn-reset {
+      background: #333;
+      color: white;
+      border: 2px solid #555;
+    }
+
+    .btn-download {
+      background: var(--psycho-green);
+      color: black;
+      box-shadow: 4px 4px 0px white;
+      border: 2px solid black;
+    }
+
+    .btn-download:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px white;
+    }
+
+    /* --- RAIN CANVAS --- */
+    #rain-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="rain-canvas"></canvas>
+
+  <nav class="psycho-nav">
+    <div class="psycho-logo">
+      <img src="./src/assets/trollface_closeup.png" alt="Trollface" class="nav-troll-spin">
+      <span>TROLLFACE2</span>
+    </div>
+    <div class="psycho-links">
+      <a href="#about">LORE</a>
+      <a href="#tokenomics">STATS</a>
+      <a href="#maker">MAKER</a>
+      <a href="https://jup.ag/swap?sell=So11111111111111111111111111111111111111112&buy=6Fvp7EhQZ9rowiDc212k2ySC4nZEPs2nyfLr8ZoxYJN5"
+        class="buy-btn-nav" target="_blank">BUY NOW</a>
+    </div>
+  </nav>
+
+  <header class="psycho-hero">
+    <div class="hero-content-psycho">
+      <h1 class="psycho-title">TROLLFACE2</h1>
+      <p class="psycho-sub">PLAY THE GAME. BUY THE COIN.</p>
+
+      <div class="game-wrapper">
+        <div class="game-container">
+          <canvas id="game-canvas" class="game-canvas"></canvas>
+          <div class="game-ui">
+            <div class="score-board">
+              <div class="score">SCORE: <span id="score">0</span></div>
+              <div class="high-score">HIGH: <span id="high-score">0</span></div>
+            </div>
+            <div id="game-over-screen" class="game-over-container" style="display: none;">
+              <div class="game-over">GAME OVER</div>
+              <div class="restart-text" onclick="resetGame()">CLICK TO RESTART</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="https://jup.ag/swap?sell=So11111111111111111111111111111111111111112&buy=6Fvp7EhQZ9rowiDc212k2ySC4nZEPs2nyfLr8ZoxYJN5"
+          target="_blank" class="btn-psycho">BUY $TROLLFACE2</a>
+        <a href="https://x.com/i/communities/1993830723472503135" target="_blank" class="btn-cult">JOIN THE CULT</a>
+      </div>
+      <div class="ca-container" onclick="copyCA()">
+        <span class="ca-label">CA:</span>
+        <span class="ca-address">6Fvp7EhQZ9rowiDc212k2ySC4nZEPs2nyfLr8ZoxYJN5</span>
+        <span class="copy-emoji">📋</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="psycho-section">
+    <div class="section-container">
+      <h2>THE LORE</h2>
+      <div class="lore-grid">
+        <div class="lore-text-box">
+          <h3>WE ARE SO BACK.</h3>
+          <p>The market has been boring. Too many dogs. Too many cats. It's time for the <strong>OG</strong> to return.
+          </p>
+          <p>Trollface2 isn't just a coin. It's a movement. We are here to <strong>MAKE MEMES GREAT AGAIN</strong>. We
+            are here to bring back the Bull Run. Get in or get rekt.</p>
+        </div>
+        <div class="lore-img-box">
+          <img src="./src/assets/trollface_closeup.png" alt="Problem?" class="spin-troll">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="psycho-section">
+    <div class="section-container">
+      <h2>LIVE CHART</h2>
+      <div class="chart-frame-psycho">
+        <div id="dexscreener-embed">
+          <iframe
+            src="https://dexscreener.com/solana/BiJFxUePx91tzBMxrkp3TVYQEqSLEm2prxwmB9Gfsbi9?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tokenomics" class="psycho-section">
+    <div class="section-container">
+      <h2>TROLLNOMICS</h2>
+      <div class="stats-psycho-grid">
+        <div class="stat-psycho-card">
+          <h3>SUPPLY</h3>
+          <p>1 BILLION</p>
+        </div>
+        <div class="stat-psycho-card">
+          <h3>TAX</h3>
+          <p>0% / 0%</p>
+        </div>
+        <div class="stat-psycho-card">
+          <h3>LIQUIDITY</h3>
+          <p>BURNED 🔥</p>
+        </div>
+        <div class="stat-psycho-card">
+          <h3>VIBES</h3>
+          <p>IMMACULATE</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="maker" class="psycho-section">
+    <div class="section-container">
+      <div class="troll-maker-container">
+        <h2>TROLL YOUR FRIENDS</h2>
+        <p>Upload a pic and add the face of dominance.</p>
+        <div class="maker-workspace" id="maker-workspace">
+          <!-- Upload Zone -->
+          <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+            <p>CLICK TO UPLOAD IMAGE</p>
+            <input type="file" id="file-input" accept="image/*" style="display: none;"
+              onchange="handleImageUpload(event)">
+          </div>
+          <!-- Canvas & Controls (Hidden initially) -->
+          <div class="canvas-wrapper" id="maker-ui" style="display: none;">
+            <canvas id="maker-canvas" class="maker-canvas"></canvas>
+            <div class="controls">
+              <label>X Position: <input type="range" id="troll-x" min="0" max="500" value="50"
+                  oninput="updateMaker()"></label>
+              <label>Y Position: <input type="range" id="troll-y" min="0" max="500" value="50"
+                  oninput="updateMaker()"></label>
+              <label>Size: <input type="range" id="troll-scale" min="0.5" max="5" step="0.1" value="1"
+                  oninput="updateMaker()"></label>
+              <label>Rotate: <input type="range" id="troll-rot" min="0" max="360" value="0"
+                  oninput="updateMaker()"></label>
+              <div class="action-buttons">
+                <button onclick="resetMaker()" class="btn-reset">NEW IMAGE</button>
+                <button onclick="downloadMaker()" class="btn-download">DOWNLOAD</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="howtobuy" class="psycho-section">
+    <div class="section-container">
+      <h2>HOW TO BUY</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>GET PHANTOM</h3>
+          <p>Download Phantom Wallet.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>GET SOL</h3>
+          <p>Buy SOL from an exchange.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>SWAP ON JUPITER</h3>
+          <p>Use the link below to swap SOL for TROLLFACE2.</p>
+        </div>
+      </div>
+      <a href="https://jup.ag/swap?sell=So11111111111111111111111111111111111111112&buy=6Fvp7EhQZ9rowiDc212k2ySC4nZEPs2nyfLr8ZoxYJN5"
+        target="_blank" class="btn-psycho btn-center">LAUNCH JUPITER</a>
+    </div>
+  </section>
+
+  <footer class="psycho-footer">
+    <p>TROLLFACE2 © 2025. NO ROADMAP. JUST MEMES.</p>
+    <img src="./src/assets/coin_3d.png" alt="Coin" class="footer-coin">
+  </footer>
+
+  <script>
+    // --- ASSETS ---
+    const trollFaceSrc = './src/assets/trollface_closeup.png';
+    const trollImg = new Image();
+    trollImg.src = trollFaceSrc;
+
+    const coinSrc = './src/assets/coin_3d.png';
+    const coinImg = new Image();
+    coinImg.src = coinSrc;
+
+    // --- UTILS ---
+    function copyCA() {
+      navigator.clipboard.writeText("6Fvp7EhQZ9rowiDc212k2ySC4nZEPs2nyfLr8ZoxYJN5");
+      alert("COPIED! NOW BUY!");
+    }
+
+    // --- TROLL RAIN ---
+    const rainCanvas = document.getElementById('rain-canvas');
+    const rainCtx = rainCanvas.getContext('2d');
+    let particles = [];
+
+    function resizeRain() {
+      rainCanvas.width = window.innerWidth;
+      rainCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeRain);
+    resizeRain();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * rainCanvas.width;
+        this.y = Math.random() * -rainCanvas.height;
+        this.size = Math.random() * 30 + 10;
+        this.speed = Math.random() * 3 + 1;
+        this.rotation = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 5;
+      }
+      update() {
+        this.y += this.speed;
+        this.rotation += this.rotSpeed;
+        if (this.y > rainCanvas.height) {
+          this.y = -50;
+          this.x = Math.random() * rainCanvas.width;
+        }
+      }
+      draw() {
+        rainCtx.save();
+        rainCtx.translate(this.x, this.y);
+        rainCtx.rotate(this.rotation * Math.PI / 180);
+        rainCtx.globalAlpha = 0.3;
+        if (trollImg.complete) rainCtx.drawImage(trollImg, -this.size / 2, -this.size / 2, this.size, this.size);
+        rainCtx.restore();
+      }
+    }
+
+    for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+    function animateRain() {
+      rainCtx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateRain);
+    }
+    animateRain();
+
+    // --- TROLL CLICKER GAME ---
+    const gameCanvas = document.getElementById('game-canvas');
+    const gameCtx = gameCanvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+    const highScoreEl = document.getElementById('high-score');
+    const gameOverScreen = document.getElementById('game-over-screen');
+
+    let gameState = {
+      bird: { x: 50, y: 150, velocity: 0, gravity: 0.4, jump: -8, size: 40 },
+      pipes: [],
+      coins: [],
+      frameCount: 0,
+      score: 0,
+      highScore: localStorage.getItem('trollHighScore') || 0,
+      isRunning: false,
+      gameStarted: false
+    };
+
+    highScoreEl.innerText = gameState.highScore;
+
+    function resizeGame() {
+      gameCanvas.width = gameCanvas.parentElement.clientWidth;
+      gameCanvas.height = 400;
+    }
+    window.addEventListener('resize', resizeGame);
+    resizeGame();
+
+    function resetGame() {
+      gameState.bird = { x: 50, y: gameCanvas.height / 2, velocity: 0, gravity: 0.4, jump: -8, size: 40 };
+      gameState.pipes = [];
+      gameState.coins = [];
+      gameState.frameCount = 0;
+      gameState.score = 0;
+      gameState.isRunning = true;
+      gameState.gameStarted = true;
+      scoreEl.innerText = 0;
+      gameOverScreen.style.display = 'none';
+      animateGame();
+    }
+
+    function jump() {
+      if (!gameState.isRunning && !gameState.gameStarted) { resetGame(); return; }
+      if (gameState.isRunning) gameState.bird.velocity = gameState.bird.jump;
+    }
+
+    gameCanvas.addEventListener('mousedown', (e) => { e.preventDefault(); jump(); });
+    gameCanvas.addEventListener('touchstart', (e) => { e.preventDefault(); jump(); });
+    window.addEventListener('keydown', (e) => { if (e.code === 'Space') { e.preventDefault(); jump(); } });
+
+    function animateGame() {
+      if (!gameState.isRunning) return;
+
+      gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+      // Bird
+      gameState.bird.velocity += gameState.bird.gravity;
+      gameState.bird.y += gameState.bird.velocity;
+
+      if (trollImg.complete) {
+        gameCtx.drawImage(trollImg, gameState.bird.x, gameState.bird.y, gameState.bird.size, gameState.bird.size);
+      } else {
+        gameCtx.fillStyle = 'white';
+        gameCtx.fillRect(gameState.bird.x, gameState.bird.y, gameState.bird.size, gameState.bird.size);
+      }
+
+      // Pipes & Coins Spawning
+      if (gameState.frameCount % 150 === 0) {
+        const gap = 200;
+        const pipeWidth = 60;
+        const minHeight = 50;
+        const pipeHeight = Math.random() * (gameCanvas.height - gap - minHeight * 2) + minHeight;
+        gameState.pipes.push({ x: gameCanvas.width, topHeight: pipeHeight, bottomY: pipeHeight + gap, width: pipeWidth, passed: false });
+
+        // Spawn coin in the gap
+        gameState.coins.push({
+          x: gameCanvas.width + 30, // Center in pipe width roughly
+          y: pipeHeight + (gap / 2) - 15, // Center in gap
+          size: 30,
+          collected: false
+        });
+      }
+
+      // Update Pipes
+      gameState.pipes.forEach((pipe, index) => {
+        pipe.x -= 2;
+        gameCtx.fillStyle = '#ffffff';
+        gameCtx.fillRect(pipe.x, 0, pipe.width, pipe.topHeight);
+        gameCtx.fillRect(pipe.x, pipe.bottomY, pipe.width, gameCanvas.height - pipe.bottomY);
+
+        // Collision
+        const pad = 8;
+        if (
+          gameState.bird.x + pad < pipe.x + pipe.width &&
+          gameState.bird.x + gameState.bird.size - pad > pipe.x &&
+          (gameState.bird.y + pad < pipe.topHeight || gameState.bird.y + gameState.bird.size - pad > pipe.bottomY)
+        ) {
+          endGame();
+        }
+
+        // Score
+        if (pipe.x + pipe.width < gameState.bird.x && !pipe.passed) {
+          gameState.score++;
+          scoreEl.innerText = gameState.score;
+          pipe.passed = true;
+        }
+
+        if (pipe.x + pipe.width < 0) gameState.pipes.splice(index, 1);
+      });
+
+      // Update Coins
+      gameState.coins.forEach((coin, index) => {
+        coin.x -= 2;
+        if (!coin.collected) {
+          if (coinImg.complete) {
+            gameCtx.drawImage(coinImg, coin.x, coin.y, coin.size, coin.size);
+          } else {
+            gameCtx.fillStyle = 'gold';
+            gameCtx.beginPath();
+            gameCtx.arc(coin.x + coin.size / 2, coin.y + coin.size / 2, coin.size / 2, 0, Math.PI * 2);
+            gameCtx.fill();
+          }
+
+          // Coin Collision
+          if (
+            gameState.bird.x < coin.x + coin.size &&
+            gameState.bird.x + gameState.bird.size > coin.x &&
+            gameState.bird.y < coin.y + coin.size &&
+            gameState.bird.y + gameState.bird.size > coin.y
+          ) {
+            coin.collected = true;
+            gameState.score += 5; // Bonus points!
+            scoreEl.innerText = gameState.score;
+          }
+        }
+        if (coin.x + coin.size < 0) gameState.coins.splice(index, 1);
+      });
+
+      // Bounds
+      if (gameState.bird.y + gameState.bird.size > gameCanvas.height || gameState.bird.y < 0) endGame();
+
+      gameState.frameCount++;
+      requestAnimationFrame(animateGame);
+    }
+
+    function endGame() {
+      gameState.isRunning = false;
+      if (gameState.score > gameState.highScore) {
+        gameState.highScore = gameState.score;
+        highScoreEl.innerText = gameState.score;
+        localStorage.setItem('trollHighScore', gameState.score);
+      }
+      gameOverScreen.style.display = 'block';
+    }
+
+    // Initial Draw
+    function drawStartScreen() {
+      gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+      gameCtx.fillStyle = '#ffffff';
+      gameCtx.font = '30px Impact';
+      gameCtx.textAlign = 'center';
+      gameCtx.fillText("CLICK TO START", gameCanvas.width / 2, gameCanvas.height / 2);
+    }
+
+    if (trollImg.complete) {
+      drawStartScreen();
+    } else {
+      trollImg.onload = drawStartScreen;
+    }
+
+    // Ensure resize happens
+    setTimeout(resizeGame, 100);
+
+    // --- TROLL MAKER ---
+    let makerImg = null;
+    const makerCanvas = document.getElementById('maker-canvas');
+    const makerCtx = makerCanvas.getContext('2d');
+
+    function handleImageUpload(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = new Image();
+          img.onload = () => {
+            makerImg = img;
+            document.getElementById('upload-zone').style.display = 'none';
+            document.getElementById('maker-ui').style.display = 'flex';
+            updateMaker();
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function updateMaker() {
+      if (!makerImg) return;
+      const x = parseInt(document.getElementById('troll-x').value);
+      const y = parseInt(document.getElementById('troll-y').value);
+      const scale = parseFloat(document.getElementById('troll-scale').value);
+      const rot = parseInt(document.getElementById('troll-rot').value);
+
+      const maxWidth = 500;
+      const imgScale = maxWidth / makerImg.width;
+      makerCanvas.width = maxWidth;
+      makerCanvas.height = makerImg.height * imgScale;
+
+      makerCtx.drawImage(makerImg, 0, 0, makerCanvas.width, makerCanvas.height);
+
+      const trollSize = 100 * scale;
+      makerCtx.save();
+      makerCtx.translate(x, y);
+      makerCtx.rotate(rot * Math.PI / 180);
+      makerCtx.drawImage(trollImg, -trollSize / 2, -trollSize / 2, trollSize, trollSize);
+      makerCtx.restore();
+    }
+
+    function resetMaker() {
+      makerImg = null;
+      document.getElementById('upload-zone').style.display = 'block';
+      document.getElementById('maker-ui').style.display = 'none';
+      document.getElementById('file-input').value = '';
+    }
+
+    function downloadMaker() {
+      const link = document.createElement('a');
+      link.download = 'trollified.png';
+      link.href = makerCanvas.toDataURL();
+      link.click();
+    }
+  </script>
+</body>
+
+</html>

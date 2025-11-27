@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Impact&display=swap');
+
+:root {
+    --psycho-green: #00ff00;
+    /* NEON GREEN */
+    --psycho-black: #000000;
+    /* VOID BLACK */
+    --psycho-white: #ffffff;
+    --psycho-font: 'Impact', sans-serif;
+    --body-font: 'Comic Neue', cursive;
+}
+
+.psycho-body {
+    background-color: var(--psycho-black);
+    color: var(--psycho-green);
+    font-family: var(--body-font);
+    overflow-x: hidden;
+    position: relative;
+    z-index: 1;
+
+    /* CRT Scanline Effect */
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg,
+            rgba(255, 0, 0, 0.06),
+            rgba(0, 255, 0, 0.02),
+            rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+}
+
+/* Global Glitch Animation */
+@keyframes glitch-text {
+    0% {
+        transform: translate(0);
+        text-shadow: -2px 0 red, 2px 0 blue;
+    }
+
+    25% {
+        transform: translate(-2px, 2px);
+        text-shadow: -2px -2px red, 2px 2px blue;
+    }
+
+    50% {
+        transform: translate(2px, -2px);
+        text-shadow: 2px 2px red, -2px -2px blue;
+    }
+
+    75% {
+        transform: translate(-2px, -2px);
+        text-shadow: -2px 2px red, 2px -2px blue;
+    }
+
+    100% {
+        transform: translate(0);
+        text-shadow: -2px 0 red, 2px 0 blue;
+    }
+}
+
+h1,
+h2,
+h3 {
+    animation: glitch-text 3s infinite;
+}
+
+/* Nav */
+.psycho-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #000;
+    border-bottom: 4px solid var(--psycho-green);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.psycho-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--psycho-font);
+    font-size: 2rem;
+    color: var(--psycho-green);
+    text-shadow: 0 0 10px var(--psycho-green);
+}
+
+.nav-troll-spin {
+    height: 50px;
+    animation: spin 2s linear infinite;
+    /* FASTER SPIN */
+    filter: drop-shadow(0 0 5px var(--psycho-green));
+}
+
+.psycho-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.psycho-links a {
+    color: var(--psycho-white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    padding: 5px 10px;
+}
+
+.psycho-links a:hover {
+    color: var(--psycho-black);
+    background: var(--psycho-green);
+    box-shadow: 0 0 20px var(--psycho-green);
+    transform: skew(-10deg);
+}
+
+.buy-btn-nav {
+    background: var(--psycho-green);
+    color: var(--psycho-black) !important;
+    border: 2px solid var(--psycho-green) !important;
+    font-weight: 900 !important;
+}
+
+/* Hero */
+.psycho-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem;
+    overflow: hidden;
+    text-align: center;
+    border-bottom: 4px solid var(--psycho-green);
+}
+
+.hero-content-psycho {
+    z-index: 2;
+    max-width: 900px;
+    width: 100%;
+}
+
+.psycho-title {
+    font-family: var(--psycho-font);
+    font-size: 8rem;
+    /* HUGE */
+    line-height: 0.8;
+    color: var(--psycho-white);
+    margin-bottom: 1rem;
+    text-shadow: 5px 5px 0 var(--psycho-green);
+}
+
+.psycho-sub {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--psycho-green);
+    background: #000;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.game-wrapper {
+    margin: 3rem auto;
+    border: 4px solid var(--psycho-green);
+    box-shadow: 0 0 30px var(--psycho-green);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.btn-psycho {
+    background: var(--psycho-green);
+    color: var(--psycho-black);
+    font-family: var(--psycho-font);
+    font-size: 2rem;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    border: 4px solid var(--psycho-black);
+    box-shadow: 10px 10px 0px var(--psycho-white);
+    transition: all 0.1s;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.btn-cult {
+    background: var(--psycho-black);
+    color: var(--psycho-green);
+    font-family: var(--psycho-font);
+    font-size: 2rem;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    border: 4px solid var(--psycho-green);
+    box-shadow: 10px 10px 0px var(--psycho-green);
+    transition: all 0.1s;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.btn-psycho:hover,
+.btn-cult:hover {
+    transform: translate(5px, 5px);
+    box-shadow: 5px 5px 0px;
+    filter: invert(1);
+}
+
+.ca-container {
+    margin-top: 2rem;
+    background: #000;
+    padding: 1rem;
+    border: 2px solid var(--psycho-green);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--psycho-green);
+}
+
+.ca-label {
+    font-weight: bold;
+    color: var(--psycho-green);
+    font-size: 1.5rem;
+}
+
+.ca-address {
+    font-family: monospace;
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* Sections */
+.psycho-section {
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 1;
+    background: #050505;
+    margin: 0;
+    border-bottom: 4px solid var(--psycho-green);
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.psycho-section h2 {
+    font-family: var(--psycho-font);
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    color: var(--psycho-white);
+    text-shadow: 5px 5px 0 var(--psycho-green);
+    border: 4px solid var(--psycho-green);
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: #000;
+    transform: rotate(-2deg);
+}
+
+/* Lore */
+.lore-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.lore-text-box {
+    font-size: 1.5rem;
+    border: 2px solid var(--psycho-green);
+    padding: 2rem;
+    background: #000;
+    box-shadow: 10px 10px 0 var(--psycho-white);
+}
+
+.lore-text-box h3 {
+    font-family: var(--psycho-font);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--psycho-green);
+}
+
+.spin-troll {
+    width: 100%;
+    max-width: 400px;
+    animation: spin 5s linear infinite;
+    filter: drop-shadow(0 0 20px var(--psycho-green));
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Chart */
+.chart-frame-psycho {
+    border: 4px solid var(--psycho-green);
+    background: #000;
+    box-shadow: 0 0 30px var(--psycho-green);
+    height: 80vh;
+    overflow: hidden;
+}
+
+#dexscreener-embed {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 0;
+}
+
+#dexscreener-embed iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 0;
+}
+
+/* Stats */
+.stats-psycho-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.stat-psycho-card {
+    background: #000;
+    color: var(--psycho-green);
+    padding: 2rem;
+    text-align: center;
+    border: 4px solid var(--psycho-green);
+    box-shadow: 8px 8px 0 var(--psycho-white);
+    transition: all 0.3s ease;
+}
+
+.stat-psycho-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 12px 12px 0 var(--psycho-green);
+    background: #111;
+}
+
+.stat-psycho-card h3 {
+    font-family: var(--psycho-font);
+    font-size: 2.5rem;
+    color: var(--psycho-white);
+}
+
+.stat-psycho-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--psycho-green);
+}
+
+/* How to Buy */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.step-card {
+    background: #000;
+    color: var(--psycho-green);
+    padding: 2rem;
+    border: 4px solid var(--psycho-green);
+    position: relative;
+    transition: transform 0.3s ease;
+    box-shadow: 10px 10px 0 var(--psycho-white);
+}
+
+.step-card:hover {
+    transform: scale(1.05) rotate(2deg);
+    z-index: 10;
+    box-shadow: 15px 15px 0 var(--psycho-green);
+    background: #111;
+}
+
+.step-num {
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    width: 70px;
+    height: 70px;
+    background: var(--psycho-green);
+    color: #000;
+    font-family: var(--psycho-font);
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #000;
+    box-shadow: 5px 5px 0 var(--psycho-white);
+}
+
+.step-card h3 {
+    font-family: var(--psycho-font);
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: var(--psycho-white);
+}
+
+.step-card p {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    color: var(--psycho-green);
+    font-weight: bold;
+}
+
+.btn-center {
+    display: table;
+    margin: 0 auto;
+}
+
+/* Footer */
+.psycho-footer {
+    background: #000;
+    padding: 4rem;
+    text-align: center;
+    border-top: 4px solid var(--psycho-green);
+}
+
+.psycho-footer p {
+    font-family: var(--psycho-font);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--psycho-green);
+}
+
+.footer-coin {
+    width: 120px;
+    animation: float 3s infinite ease-in-out;
+    filter: drop-shadow(0 0 10px var(--psycho-green));
+}
+
+@media (max-width: 768px) {
+    .lore-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .psycho-title {
+        font-size: 5rem;
+    }
+}

@@ -1,0 +1,143 @@
+.comic-section {
+    position: relative;
+    padding: 100px 0;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+    border-top: 2px solid var(--accent-alarm);
+    border-bottom: 2px solid var(--accent-alarm);
+}
+
+.comic-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.comic-title {
+    font-size: 4rem;
+    text-align: center;
+    color: var(--text-primary);
+    text-shadow: 4px 4px 0px var(--accent-alarm);
+    margin-bottom: 20px;
+    transform: rotate(-2deg);
+}
+
+.comic-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.comic-panel {
+    background: var(--bg-panel);
+    border: 4px solid var(--text-primary);
+    padding: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.comic-panel:hover {
+    transform: scale(1.02) rotate(1deg);
+    z-index: 10;
+    box-shadow: 15px 15px 0px var(--accent-toxic);
+    border-color: var(--accent-toxic);
+}
+
+.comic-panel.full-width {
+    grid-column: span 2;
+}
+
+.comic-image-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border: 2px solid var(--text-secondary);
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.comic-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(100%) contrast(120%);
+    transition: filter 0.3s ease;
+}
+
+.comic-panel:hover .comic-image {
+    filter: grayscale(0%) contrast(110%);
+}
+
+.comic-caption {
+    font-family: 'Courier New', Courier, monospace;
+    background: #fff;
+    color: #000;
+    padding: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid #000;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.speech-bubble {
+    position: absolute;
+    background: #fff;
+    color: #000;
+    padding: 15px 25px;
+    border-radius: 50%;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    top: -20px;
+    left: -20px;
+    border: 3px solid #000;
+    z-index: 5;
+    animation: float 3s ease-in-out infinite;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #000 transparent;
+    display: block;
+    width: 0;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .comic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comic-panel.full-width {
+        grid-column: span 1;
+    }
+
+    .comic-title {
+        font-size: 2.5rem;
+    }
+}

@@ -1,0 +1,123 @@
+.floating-buy {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem 2rem;
+    background: var(--accent-toxic);
+    color: var(--bg-primary);
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    box-shadow:
+        0 4px 20px rgba(0, 255, 106, 0.4),
+        0 0 40px rgba(0, 255, 106, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.3s ease;
+    font-weight: 900;
+}
+
+.floating-buy.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.floating-buy:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:
+        0 6px 30px rgba(0, 255, 106, 0.6),
+        0 0 60px rgba(0, 255, 106, 0.5);
+}
+
+.floating-buy:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .floating-buy {
+        bottom: 1rem;
+        right: 50%;
+        transform: translateX(50%) translateY(100px);
+        padding: 0.875rem 1.75rem;
+        font-size: 1rem;
+    }
+
+    .floating-buy.visible {
+        transform: translateX(50%) translateY(0);
+    }
+
+    .floating-buy:hover {
+        transform: translateX(50%) translateY(-5px) scale(1.05);
+    }
+}
+
+.redirect-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fade-in 0.2s ease;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    animation: slide-up 0.3s ease;
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: pulse-icon 0.5s ease infinite;
+}
+
+@keyframes pulse-icon {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.modal-text {
+    font-size: 1.5rem;
+    color: var(--accent-toxic);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}

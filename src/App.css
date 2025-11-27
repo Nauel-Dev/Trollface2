@@ -1,0 +1,45 @@
+.App {
+  min-height: 100vh;
+  position: relative;
+  transition: opacity 0.8s ease;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: var(--accent-toxic);
+  color: var(--bg-primary);
+}
+
+::-moz-selection {
+  background: var(--accent-toxic);
+  color: var(--bg-primary);
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-toxic);
+  outline-offset: 4px;
+}
+
+/* Loading state */
+@keyframes loading-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: loading-pulse 1.5s ease-in-out infinite;
+}

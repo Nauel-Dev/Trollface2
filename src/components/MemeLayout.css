@@ -1,0 +1,469 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Impact&display=swap');
+
+:root {
+    --meme-green: #39ff14;
+    --meme-dark-green: #1a4d0e;
+    --meme-black: #050505;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(5, 5, 5, 0.95);
+    border-bottom: 2px solid var(--meme-green);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.meme-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--meme-font);
+    font-size: 1.5rem;
+    color: var(--meme-green);
+}
+
+.nav-troll-spin {
+    height: 40px;
+    animation: spin 5s linear infinite;
+}
+
+.meme-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.meme-links a {
+    color: var(--meme-white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.meme-links a:hover {
+    color: var(--meme-green);
+    text-decoration: underline;
+}
+
+.buy-btn-nav {
+    background: var(--meme-green);
+    color: var(--meme-black) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none !important;
+    transform: rotate(-2deg);
+    transition: transform 0.2s;
+}
+
+.buy-btn-nav:hover {
+    transform: rotate(2deg) scale(1.1);
+}
+
+/* Hero */
+.meme-hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.hero-content-meme {
+    z-index: 2;
+    max-width: 600px;
+    text-align: left;
+}
+
+/* Glitch Title */
+.glitch-title {
+    font-family: var(--meme-font);
+    font-size: 6rem;
+    line-height: 0.9;
+    color: var(--meme-white);
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.glitch-title::before,
+.glitch-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-title::before {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-title::after {
+    left: -2px;
+    text-shadow: -1px 0 blue;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        clip: rect(20px, 9999px, 10px, 0);
+    }
+
+    100% {
+        clip: rect(80px, 9999px, 90px, 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(90px, 9999px, 100px, 0);
+    }
+
+    100% {
+        clip: rect(10px, 9999px, 20px, 0);
+    }
+}
+
+.hero-sub {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--meme-green);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-mega {
+    background: var(--meme-green);
+    color: var(--meme-black);
+    font-family: var(--meme-font);
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border: 4px solid var(--meme-white);
+    box-shadow: 8px 8px 0px var(--meme-white);
+    transition: all 0.1s;
+}
+
+.btn-community {
+    background: var(--meme-black);
+    color: var(--meme-white);
+    font-family: var(--meme-font);
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border: 4px solid var(--meme-green);
+    box-shadow: 8px 8px 0px var(--meme-green);
+    transition: all 0.1s;
+}
+
+.shake-on-hover:hover {
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.ca-container {
+    background: #222;
+    padding: 1rem;
+    border: 2px dashed var(--meme-green);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.ca-container:hover {
+    background: #333;
+}
+
+.ca-label {
+    color: var(--meme-green);
+    font-weight: bold;
+}
+
+.ca-address {
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.hero-image-container {
+    z-index: 1;
+    margin-left: -50px;
+    transition: transform 0.1s ease-out;
+}
+
+}
+
+.meme-section h2 {
+    font-family: var(--meme-font);
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+}
+
+.white-bg {
+    background: var(--meme-white);
+    color: var(--meme-black);
+}
+
+.white-bg h2 {
+    color: var(--meme-black);
+    text-shadow: 2px 2px 0px var(--meme-green);
+}
+
+.black-bg {
+    background: var(--meme-black);
+    color: var(--meme-white);
+}
+
+.black-bg h2 {
+    color: var(--meme-green);
+    text-shadow: 2px 2px 0px var(--meme-white);
+}
+
+.green-bg {
+    background: var(--meme-green);
+    color: var(--meme-black);
+}
+
+.green-bg h2 {
+    color: var(--meme-black);
+    text-shadow: 2px 2px 0px var(--meme-white);
+}
+
+/* Lore */
+.lore-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.lore-text-box {
+    font-size: 1.5rem;
+}
+
+.lore-text-box h3 {
+    font-family: var(--meme-font);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.spin-troll {
+    width: 100%;
+    max-width: 400px;
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Chart */
+.chart-frame-meme {
+    border: 4px solid var(--meme-green);
+    background: #000;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    height: 80vh;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chart-frame-meme:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 40px rgba(57, 255, 20, 0.4);
+}
+
+#dexscreener-embed {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 0;
+}
+
+#dexscreener-embed iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 0;
+}
+
+/* Stats */
+.stats-meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.stat-meme-card {
+    background: var(--meme-gray);
+    color: var(--meme-white);
+    padding: 2rem;
+    text-align: center;
+    border: 2px solid var(--meme-green);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.stat-meme-card:hover {
+    transform: translateY(-10px) rotate(2deg);
+    background: var(--meme-black);
+    box-shadow: 0 10px 20px rgba(57, 255, 20, 0.2);
+}
+
+.stat-meme-card h3 {
+    font-family: var(--meme-font);
+    font-size: 2rem;
+    color: var(--meme-green);
+}
+
+.stat-meme-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Steps */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.step-card {
+    background: var(--meme-gray);
+    color: var(--meme-white);
+    padding: 2rem;
+    border: 2px solid var(--meme-green);
+    border-radius: 12px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.step-num {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 60px;
+    height: 60px;
+    background: var(--meme-green);
+    color: var(--meme-black);
+    font-family: var(--meme-font);
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--meme-green);
+}
+
+.step-card h3 {
+    font-family: var(--meme-font);
+    font-size: 1.8rem;
+    margin-top: 1rem;
+}
+
+.btn-center {
+    display: table;
+    margin: 0 auto;
+}
+
+/* Footer */
+.meme-footer {
+    background: var(--meme-black);
+    padding: 4rem;
+    text-align: center;
+    border-top: 8px solid var(--meme-green);
+}
+
+.meme-footer p {
+    font-family: var(--meme-font);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.footer-coin {
+    width: 100px;
+    animation: float 3s infinite ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .meme-hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 4rem;
+    }
+
+    .hero-content-meme {
+        text-align: center;
+    }
+
+    .hero-image-container {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .hero-troll {
+        max-width: 100%;
+    }
+
+    .lore-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .glitch-title {
+        font-size: 4rem;
+    }
+}
